@@ -103,4 +103,45 @@ class Commande
     {
         return $this->description;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sous_modules = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add sousModule
+     *
+     * @param \DomotiqueBundle\Entity\Sous_module $sousModule
+     *
+     * @return Commande
+     */
+    public function addSousModule(\DomotiqueBundle\Entity\Sous_module $sousModule)
+    {
+        $this->sous_modules[] = $sousModule;
+
+        return $this;
+    }
+
+    /**
+     * Remove sousModule
+     *
+     * @param \DomotiqueBundle\Entity\Sous_module $sousModule
+     */
+    public function removeSousModule(\DomotiqueBundle\Entity\Sous_module $sousModule)
+    {
+        $this->sous_modules->removeElement($sousModule);
+    }
+
+    /**
+     * Get sousModules
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSousModules()
+    {
+        return $this->sous_modules;
+    }
 }

@@ -21,53 +21,48 @@ class Utilisateur extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
+     *
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
      */
     private $prenom;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="telephone", type="string", length=255)
+     * @ORM\Column(name="telephone", type="integer", nullable=true)
      */
     private $telephone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type_alerte", type="string", length=255)
+     * @ORM\Column(name="type_alerte", type="string", length=255, nullable=true)
      */
     private $typeAlerte;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255)
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
     private $photo;
 
     /**
      * @ORM\OneToMany(targetEntity="DomotiqueBundle\Entity\Piece", mappedBy="utilisateurs")
      * @var $piece[]
+     * @ORM\JoinColumn(nullable=true)
      */
     private $Id_Piece;
 
@@ -231,5 +226,40 @@ class Utilisateur extends BaseUser
     public function __construct()
     {
         $this->Id_Ville = new \Doctrine\Common\Collections\ArrayCollection();
+        parent::__construct();
+    }
+
+    /**
+     * Add idPiece
+     *
+     * @param \DomotiqueBundle\Entity\Piece $idPiece
+     *
+     * @return Utilisateur
+     */
+    public function addIdPiece(\DomotiqueBundle\Entity\Piece $idPiece)
+    {
+        $this->Id_Piece[] = $idPiece;
+
+        return $this;
+    }
+
+    /**
+     * Remove idPiece
+     *
+     * @param \DomotiqueBundle\Entity\Piece $idPiece
+     */
+    public function removeIdPiece(\DomotiqueBundle\Entity\Piece $idPiece)
+    {
+        $this->Id_Piece->removeElement($idPiece);
+    }
+
+    /**
+     * Get idPiece
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdPiece()
+    {
+        return $this->Id_Piece;
     }
 }

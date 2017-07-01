@@ -1,7 +1,7 @@
 domotique:
     resource: "@DomotiqueBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

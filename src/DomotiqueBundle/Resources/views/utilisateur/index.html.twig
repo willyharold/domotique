@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- BEGIN PAGE CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN PAGE HEAD -->
+    <div class="page-head">
+        <div class="container">
+            <!-- BEGIN PAGE TITLE -->
+            <div class="page-title">
+                <h1>Utilisateur
+                    <small>Listes des utilisateurs qui ont acces au système</small>
+                </h1>
+            </div>
+            <!-- END PAGE TITLE -->
+            <!-- BEGIN PAGE TOOLBAR -->
+            <div class="page-toolbar">
+                <!-- BEGIN THEME PANEL -->
+
+                <!-- END THEME PANEL -->
+            </div>
+            <!-- END PAGE TOOLBAR -->
+        </div>
+    </div>
+    <!-- END PAGE HEAD -->
+    <!-- BEGIN PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container">
+
+            <!-- BEGIN PAGE BREADCRUMB -->
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <a href="#">Accueil</a><i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <a href="layout_blank_page.html">Utilisateurs</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li class="active">
+                    Liste
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs font-green-sharp"></i>
+                                <span class="caption-subject font-green-sharp bold uppercase">TABLE UTILISATEUR</span>
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-toolbar">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="btn-group">
+                                            <a id="sample_editable_1_new" class="btn green" href="{{ path('utilisateur_new') }}">
+                                                Nouvel utilisateur <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="btn-group pull-right">
+                                            <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        Print </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        Save as PDF </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        Export to Excel </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        id
+                                    </th>
+                                    <th>
+                                        Nom
+                                    </th>
+                                    <th>
+                                        Prenom
+                                    </th>
+                                    <th>
+                                        Téléphone
+                                    </th>
+                                    <th>
+                                        Type d'alerte
+                                    </th>
+                                    <th>
+                                        actions
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="odd gradeX">
+                                    <td>
+                                        shuxer
+                                    </td>
+                                    <td>
+                                        <a href="mailto:shuxer@gmail.com">
+                                            shuxer@gmail.com </a>
+                                    </td>
+                                    <td>
+                                        120
+                                    </td>
+                                    <td class="center">
+                                        12 Jan 2012
+                                    </td>
+                                    <td>
+									<span class="label label-sm label-success">
+									Approved </span>
+                                    </td>
+                                    <td>
+									<span class="label label-sm label-success">
+									Approved </span>
+                                    </td>
+                                </tr>
+                                {% for utilisateur in utilisateurs %}
+                                    <tr class="odd gradeX">
+                                        <td>
+                                            <a href="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}">{{ utilisateur.id }}</a>
+                                        </td>
+                                        <td>{{ utilisateur.nom }}</td>
+                                        <td>{{ utilisateur.prenom }}</td>
+                                        <td>{{ utilisateur.telephone }}</td>
+                                        <td>{{ utilisateur.typeAlerte }}</td>
+                                        <td>
+                                            <a class="btn btn-info" href="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}">détails</a>
+
+                                            <a class="btn btn-success" href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}">modifier</a>
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END PAGE CONTENT -->
+        </div>
+
+        {% endblock %}

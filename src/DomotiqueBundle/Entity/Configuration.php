@@ -225,4 +225,28 @@ class Configuration
     {
         return $this->etat;
     }
+
+    /**
+     * Set sousModule
+     *
+     * @param \DomotiqueBundle\Entity\Sous_module $sousModule
+     *
+     * @return Configuration
+     */
+    public function setSousModule(\DomotiqueBundle\Entity\Sous_module $sousModule = null)
+    {
+        $this->sous_module = $sousModule;
+
+        return $this;
+    }
+
+    /**
+     * Get sousModule
+     *
+     * @return \DomotiqueBundle\Entity\Sous_module
+     */
+    public function getSousModule()
+    {
+        return $this->sous_module;
+    }
 }

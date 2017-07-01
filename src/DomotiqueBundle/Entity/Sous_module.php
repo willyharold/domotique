@@ -388,4 +388,80 @@ class Sous_module
     {
         return $this->photo;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->piece = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Id_Commande = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add piece
+     *
+     * @param \DomotiqueBundle\Entity\Piece $piece
+     *
+     * @return Sous_module
+     */
+    public function addPiece(\DomotiqueBundle\Entity\Piece $piece)
+    {
+        $this->piece[] = $piece;
+
+        return $this;
+    }
+
+    /**
+     * Remove piece
+     *
+     * @param \DomotiqueBundle\Entity\Piece $piece
+     */
+    public function removePiece(\DomotiqueBundle\Entity\Piece $piece)
+    {
+        $this->piece->removeElement($piece);
+    }
+
+    /**
+     * Get piece
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPiece()
+    {
+        return $this->piece;
+    }
+
+    /**
+     * Add idCommande
+     *
+     * @param \DomotiqueBundle\Entity\Commande $idCommande
+     *
+     * @return Sous_module
+     */
+    public function addIdCommande(\DomotiqueBundle\Entity\Commande $idCommande)
+    {
+        $this->Id_Commande[] = $idCommande;
+
+        return $this;
+    }
+
+    /**
+     * Remove idCommande
+     *
+     * @param \DomotiqueBundle\Entity\Commande $idCommande
+     */
+    public function removeIdCommande(\DomotiqueBundle\Entity\Commande $idCommande)
+    {
+        $this->Id_Commande->removeElement($idCommande);
+    }
+
+    /**
+     * Get idCommande
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdCommande()
+    {
+        return $this->Id_Commande;
+    }
 }

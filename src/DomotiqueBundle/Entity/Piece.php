@@ -139,4 +139,80 @@ class Piece
     {
         return $this->consoKw;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Id_Sous_module = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->utilisateurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add idSousModule
+     *
+     * @param \DomotiqueBundle\Entity\Sous_module $idSousModule
+     *
+     * @return Piece
+     */
+    public function addIdSousModule(\DomotiqueBundle\Entity\Sous_module $idSousModule)
+    {
+        $this->Id_Sous_module[] = $idSousModule;
+
+        return $this;
+    }
+
+    /**
+     * Remove idSousModule
+     *
+     * @param \DomotiqueBundle\Entity\Sous_module $idSousModule
+     */
+    public function removeIdSousModule(\DomotiqueBundle\Entity\Sous_module $idSousModule)
+    {
+        $this->Id_Sous_module->removeElement($idSousModule);
+    }
+
+    /**
+     * Get idSousModule
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdSousModule()
+    {
+        return $this->Id_Sous_module;
+    }
+
+    /**
+     * Add utilisateur
+     *
+     * @param \DomotiqueBundle\Entity\Utilisateur $utilisateur
+     *
+     * @return Piece
+     */
+    public function addUtilisateur(\DomotiqueBundle\Entity\Utilisateur $utilisateur)
+    {
+        $this->utilisateurs[] = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Remove utilisateur
+     *
+     * @param \DomotiqueBundle\Entity\Utilisateur $utilisateur
+     */
+    public function removeUtilisateur(\DomotiqueBundle\Entity\Utilisateur $utilisateur)
+    {
+        $this->utilisateurs->removeElement($utilisateur);
+    }
+
+    /**
+     * Get utilisateurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
+    }
 }
